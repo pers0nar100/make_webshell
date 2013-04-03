@@ -32,17 +32,19 @@ import sys
 from optparse import OptionParser
 
 FILE_FORMAT_MAP = {
-    '0': 'jpeg',
-    '1': 'exif',
-    '2': 'png',
-    '3': 'gif'
+    '0' : 'jpeg',
+    '1' : 'exif',
+    '2' : 'png',
+    '3' : 'gif',
+    '4' : 'bmp'
 }
 
 SIGNATURE_MAP = {
-    'jpeg': ['\xff\xd8\xff\xe0\x00\x10JFIF\x00', '\xff\xd9'],
-    'exif': ['\xff\xd8\xff\xe1\x43\x1fExif\x00', '\xff\xd9'],
-    'png': '\x89\x50\x4e\x47\x0d\x0a\x1a\x0a',
-    'gif': '\x47\x49\x46\x38\x39\x61'
+    'jpeg' : ['\xff\xd8\xff\xe0\x00\x10JFIF\x00', '\xff\xd9'],
+    'exif' : ['\xff\xd8\xff\xe1\x43\x1fExif\x00', '\xff\xd9'],
+    'png' : '\x89\x50\x4e\x47\x0d\x0a\x1a\x0a',
+    'gif' : '\x47\x49\x46\x38\x39\x61',
+    'bmp' : '\x42\x4d' + '\x20'*4 + '\x20'*2 + '\x20'*2 + '\x20'*4
 }
    
 def return_data(format_key):
@@ -69,7 +71,7 @@ if __name__ == '__main__':
     (options, args) = parser.parse_args()
 
     if options.in_filename is not None:
-        shell = open(in_filename, 'r').read()
+        shell = open(options.in_filename, 'r').read()
     else:
         shell = sys.stdin.read()
 
