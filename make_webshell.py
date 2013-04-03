@@ -62,7 +62,7 @@ def write_file(signature, inputbuf, outfilename):
 
 if __name__ == '__main__':
     # returns a tuple of (options, args)
-    parser = OptionParser('Usage: %prog [-t file_format_number] < -o out_file >')
+    parser = OptionParser('Usage: %prog [-t file_format_number] [-i input_file] <-o out_file >')
     parser.add_option('-t', '--type', action='store', dest='file_format_key', help='')
     parser.add_option('-o', '--out', action='store', dest='out_filename', help='')
     parser.add_option('-i', '--in', action='store', dest='in_filename', help='')
