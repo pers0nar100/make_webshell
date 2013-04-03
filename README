@@ -1,6 +1,0 @@
-Usage: make_webshell.py [-t file_format_number] < -o out_file >
-
-Options:
-  -h, --help            show this help message and exit
-  -t FILE_FORMAT_KEY, --type=FILE_FORMAT_KEY
-  -o OUT_FILENAME, --out=OUT_FILENAME
