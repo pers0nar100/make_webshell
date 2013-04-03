@@ -1,6 +1,6 @@
 # Usage
 <pre>
-$ python make_webshell.py [-t file_format_number] [-i input_file] <-o out_file >
+$ python make_webshell.py [-t file_format_number] [-i input_file] &lt;-o out_file&gt;
 </pre>
 
 ## Options
