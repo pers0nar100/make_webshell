@@ -32,24 +32,24 @@ import sys
 from optparse import OptionParser
 
 FILE_FORMAT_MAP = {
-    '0' : 'jpeg',
-    '1' : 'exif',
-    '2' : 'png',
-    '3' : 'gif',
-    '4' : 'bmp'
+    '0': 'jpeg',
+    '1': 'exif',
+    '2': 'png',
+    '3': 'gif',
+    '4': 'bmp'
 }
 
 SIGNATURE_MAP = {
-    'jpeg' : ['\xff\xd8\xff\xe0\x00\x10JFIF\x00', '\xff\xd9'],
-    'exif' : ['\xff\xd8\xff\xe1\x43\x1fExif\x00', '\xff\xd9'],
-    'png' : '\x89\x50\x4e\x47\x0d\x0a\x1a\x0a',
-    'gif' : '\x47\x49\x46\x38\x39\x61',
-    'bmp' : 'BM\x36\x00\x24\x00' + '\x00\x00' + '\x00\x00' + '\x36\x00\x00\x00' + '\x28\x00' + \
+    'jpeg': ['\xff\xd8\xff\xe0\x00\x10JFIF\x00', '\xff\xd9'],
+    'exif': ['\xff\xd8\xff\xe1\x43\x1fExif\x00', '\xff\xd9'],
+    'png': '\x89\x50\x4e\x47\x0d\x0a\x1a\x0a',
+    'gif': '\x47\x49\x46\x38\x39\x61',
+    'bmp': 'BM\x36\x00\x24\x00' + '\x00\x00' + '\x00\x00' + '\x36\x00\x00\x00' + '\x28\x00' + \
             '\x00\x00\x00\x04\x00\x00\x00\x03' + '\x00\x00\x01\x00\x18\x00\x00\x00' + \
             '\x00' * 4 + '\x24\x00\x00\x00' + '\x00' * 8 + \
             '\x00' * 6
 }
-   
+
 def return_data(format_key):
     filetype = FILE_FORMAT_MAP.get(format_key)
     signature = SIGNATURE_MAP.get(filetype)
@@ -60,14 +60,14 @@ def write_file(signature, inputbuf, outfilename):
         data = signature[0] + inputbuf + signature[1]
     else:
         data = signature + inputbuf
-        
+
     out_file = open(outfilename, 'w')
     out_file.write(data)
     out_file.flush()
 
 if __name__ == '__main__':
     # returns a tuple of (options, args)
-    parser = OptionParser('Usage: %prog [-t file_format_number] [-i input_file] <-o out_file >')
+    parser = OptionParser('Usage: %prog [-t file_format_number (0:jpg, 1:exif, 2:png, 3:gif, 4:bmp)] [-i input_file] <-o out_file >')
     parser.add_option('-t', '--type', action='store', dest='file_format_key', help='')
     parser.add_option('-o', '--out', action='store', dest='out_filename', help='')
     parser.add_option('-i', '--in', action='store', dest='in_filename', help='')
